@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+                crossorigin="anonymous"
+            />
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .contact-container {
+            background-image: url(Images/unnamed\ \(52\).jpg);
+            background-size: cover;
+            background-position: top;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .content-subcontainer {
+            background-color: transparent;
+            backdrop-filter: blur(8px);
+            padding: 50px 30px;
+            border-radius: 12px;
+            max-width: 960px;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3.5em;
+            color: #006464;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .sections-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        .contact-info {
+            padding-right: 20px;
+        }
+
+
+        h2 {
+            font-size: 1.8em;
+            color: #006464;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
+            border-bottom: 2px solid #006464;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .info-text {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1em;
+            color: #edecc7;
+        }
+
+        .info-text i {
+            color: #70c4c4;
+            margin-right: 15px;
+            font-size: 1.5em;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: #333333;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #70c4c4;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 400;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .form-group input,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1em;
+            transition: border-color 0.3s;
+
+
+
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border: 2px solid #006464;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #006464;
+            color: #edecc7;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            font-weight: 200;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:hover {
+            background-color: #edecc7;
+            color: #006464;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 15px;
+            border: 4px solid #70c4c4;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            display: block;
+        }
+
+        .map-caption {
+            font-style: italic;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .Message-Box {
+            position: fixed;
+            left: 35%;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 100;
+            max-width: 90%;
+            box-sizing: border-box;
+            text-align: left;
+            font-weight: 500;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+
+
+        }
+
+        .Message-Box.show {
+            transform: translatey(30%) translateY(0);
+
+        }
+
+        .error-box {
+            background-color: #cc0000;
+            color: white;
+        }
+
+        #Close-Btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            margin-left: 15px;
+            padding: 0;
+            float: right;
+            transition: color 0.2s;
+        }
+
+        .success-box {
+            background-color: #008000;
+            color: white;
+        }
+
+        #Username_Error {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #Email_Error {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #Subject_Error {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #Message_Error {
+            color: red;
+            font-size: 0.85em;
+            margin-top: -2px;
+            margin-bottom: 10px;
+            display: none;
+
+        }
+
+
+      
+/* FOOTER AND NAVBAR STYLING */
+         :root {
+            --main-dark: #333333; 
+            --main-blue: #006464;
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC; 
+            --main-blue-light: #70c4c4;
+        }
+
+          #footer {
+            background: var(--main-dark);
+            color: white;
+            padding: 3rem 0 1rem 0;
+            margin-top: 3rem;
+        }
+
+        #footer-grid {
+            display: grid;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-col h5 {
+            border-bottom: 2px solid var(--main-blue);
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col i {
+            color: var(--main-blue);
+            margin-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            #about-text {
+                flex-direction: row;
+            }
+
+            #values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+                :root {
+            --main-dark: #333333; 
+            --main-blue: #006464; 
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC;
+            --main-blue-light: #70c4c4; 
+        }
+       .navbar {
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--main-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand img {
+            height: 40px; 
+            width: auto;
+            border-radius: 4px;
+            margin-right: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+        }
+        
+        .menu-icon:hover, .menu-icon:focus {
+            background-color: var(--main-blue);
+        }
+        
+        .menu-icon-svg {
+            height: 24px;
+            width: 24px;
+            stroke: var(--main-dark);
+            transition: stroke 0.2s;
+        }
+        
+        .menu-icon:hover .menu-icon-svg, 
+        .menu-icon:focus .menu-icon-svg,
+        .menu-icon.active .menu-icon-svg {
+            stroke: var(--bg-light);
+        }
+
+        .close-icon { display: none; }
+        .menu-icon.active .hamburger { display: none; }
+        .menu-icon.active .close-icon { display: block; }
+
+
+        .nav-links {
+            display: none; 
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 8px 12px 12px;
+        }
+
+        .nav-links.is-open {
+            display: block;
+        }
+
+        .nav-link {
+            display: block; 
+            color: var(--main-dark);
+            font-weight: 500;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-light);
+            background-color: var(--main-blue);
+        }
+
+        .cta-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            background-color: var(--main-blue);
+            color: var(--bg-light);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--main-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu {
+            position: relative;
+            user-select: none;
+            padding: 10px 12px; 
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-menu:hover {
+             background-color: rgba(0, 100, 100, 0.1); 
+        }
+        
+        .dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.15); 
+        }
+
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 4px 0;
+            z-index: 20;
+            border-radius: 8px;
+            top: 100%; 
+            left: 0;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .dropdown-menu.open > .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .dropdown-link:hover {
+            background-color: rgba(0, 100, 100, 0.1);
+            color: var(--main-dark);
+        }
+
+        .nested-dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.2); 
+        }
+
+        .nested-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            min-width: 150px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            z-index: 30;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            padding: 4px 0;
+        }
+
+        .nested-dropdown-menu.open > .nested-content {
+            display: block;
+        }
+
+        .nested-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nested-link:hover {
+            background-color: rgba(0, 100, 100, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                top: auto;
+                box-shadow: none;
+                padding: 0;
+                background-color: transparent;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-link, .dropdown-menu {
+                display: inline-flex; 
+                margin-bottom: 0;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                display: block; 
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .dropdown-content {
+                position: static; 
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                border: none;
+                padding-left: 15px;
+            }
+
+            .dropdown-link {
+                padding-left: 30px; 
+
+            .nested-content {
+                position: static;
+                box-shadow: none;
+                min-width: 100%;
+                border: none;
+                padding: 0;
+                padding-left: 15px;
+            }
+
+            .nested-link {
+                padding-left: 45px; 
+            }
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <script>
+        function Form_Check() {
+            const messageBox = document.getElementById('Message-Box');
+            const messageTitle = document.getElementById('Message-Title');
+            const messageContent = document.getElementById('Message-text');
+            const CloseBtn = document.getElementById("Close-Btn");
+
+            let Username = document.getElementById("name").value;
+            let Email = document.getElementById("email").value;
+            let Subject = document.getElementById("subject").value;
+            let Message = document.getElementById("message").value;
+
+            Username_Error.style.display = "none";
+            Email_Error.style.display = "none";
+            Subject_Error.style.display = "none";
+            Message_Error.style.display = "none";
+
+            if (!Username && !Email && !Subject && !Message) {
+                CloseBtn.innerHTML = "&times;";
+                messageContent.textContent = "Please fill in all required fields before submitting the form.";
+                messageTitle.textContent = "Missing Information";
+                messageBox.classList.add('error-box');
+                messageBox.classList.add('show');
+
+                Username_Error.style.display = "block";
+                Email_Error.style.display = "block";
+                Subject_Error.style.display = "block";
+                Message_Error.style.display = "block";
+
+                setTimeout(() => {
+                    messageBox.classList.remove('error-box');
+                    messageBox.classList.remove('show');
+                    CloseBtn.innerHTML = "";
+                    messageContent.textContent = "";
+                    messageTitle.textContent = "";
+                }, 2000);
+
+
+            }
+            else if (!Username) {
+                Username_Error.style.display = "block";
+            }
+            else if (!Email) {
+                Email_Error.style.display = "block";
+            }
+            else if (!Subject) {
+                Subject_Error.style.display = "block";
+            }
+            else if (!Message) {
+                Message_Error.style.display = "block";
+            }
+
+            else {
+                CloseBtn.innerHTML = "&times;";
+                messageTitle.textContent = "Message Sent Successfully";
+                messageContent.textContent = "Thank you for reaching out! We’ve received your message ";
+                messageBox.classList.add('success-box');
+                messageBox.classList.add('show');
+
+                setTimeout(() => {
+                    messageBox.classList.remove('success-box');
+                    messageBox.classList.remove('show');
+                    CloseBtn.innerHTML = "";
+                    messageContent.textContent = "";
+                    messageTitle.textContent = "";
+                    window.location.href = "index.html";
+                }, 2000);
+
+
+            }
+        }
+
+        function CloseMessage() {
+            const messageBox = document.getElementById('Message-Box');
+            const messageTitle = document.getElementById('Message-Title');
+            const messageContent = document.getElementById('Message-text');
+            const CloseBtn = document.getElementById("Close-Btn");
+
+            messageBox.classList.remove('success-box');
+            messageBox.classList.remove('show');
+            CloseBtn.innerHTML = "";
+            messageContent.textContent = "";
+            messageTitle.textContent = "";
+        }
+    </script>
+
+
+<nav class="navbar">
+    <div class="nav-container">
+        
+        <a href="#" class="brand" style="margin-left: -30%;">
+            <img src="Images/logo.png" alt="Company Logo">
+            FASHNIFY
+        </a>
+
+        <button id="mobile-menu-button" class="menu-icon" aria-expanded="false" aria-controls="nav-links">
+           
+            
+        </button>
+        
+        <div class="nav-links" id="nav-links" style="margin-right: 10%;"> 
+            <a href="index.html" class="nav-link">Home</a>
+            
+            <div class="nav-link dropdown-menu" id="brands-dropdown-toggle">
+              Brands 
+              <span class="dropdown-arrow primary-arrow">&#9662;</span>
+              
+              <div class="dropdown-content">
+                
+        
+                          <a href="Gul_Ahmed_shop.html" class="nested-link">Gul_Ahmed</a>
+                          <a href="Lakmé_shop.html" class="nested-link">Lakmé</a>
+                          <a href="khaadi_shop.html" class="nested-link">Khaadi</a>
+                          <a href="Sana_Safinaz_shop.html" class="nested-link">Sana_Safinaz</a>
+                   
+              </div>
+          </div>
+               
+           
+
+            <a href="AboutUs.html" class="nav-link">About Us</a>
+            <a href="Contact.html" class="nav-link">Contact</a>
+            <a href="feedback.html" class="nested-link">Feedback</a>
+            
+           
+        </div>
+    </div>
+     <a href="Register.html" class="cta-button" style="margin-right: 10px; text-decoration: none;">
+                Sign Up
+     </a>
+</nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.getElementById('nav-links'); 
+            const dropdownToggles = document.querySelectorAll('.dropdown-menu, .nested-dropdown-menu');
+            
+            const toggleMobileMenu = () => {
+                navLinks.classList.toggle('is-open');
+                mobileButton.classList.toggle('active');
+                const isExpanded = mobileButton.classList.contains('active');
+                mobileButton.setAttribute('aria-expanded', isExpanded);
+                if (!isExpanded) {
+                    closeAllDropdowns(null);
+                }
+            };
+            
+            if (mobileButton) {
+                mobileButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            
+            const closeAllDropdowns = (currentElement) => {
+                document.querySelectorAll('.dropdown-menu.open, .nested-dropdown-menu.open').forEach(el => {
+                    if (el !== currentElement && !el.contains(currentElement)) {
+                         el.classList.remove('open');
+                         if (el.id === 'brands-dropdown-toggle') {
+                             el.querySelector('.primary-arrow').innerHTML = '&#9662;'; 
+                         }
+                    }
+                });
+            };
+
+            const handleDropdownClick = (e) => {
+                e.stopPropagation();
+
+                const parentDropdown = e.currentTarget;
+                const wasOpen = parentDropdown.classList.contains('open');
+
+                closeAllDropdowns(parentDropdown);
+
+                if (!wasOpen) {
+                    parentDropdown.classList.add('open');
+                } else {
+                    parentDropdown.classList.remove('open');
+                }
+
+                if (parentDropdown.id === 'brands-dropdown-toggle') {
+                    const arrow = parentDropdown.querySelector('.primary-arrow');
+                    arrow.innerHTML = parentDropdown.classList.contains('open') ? '&#9650;' : '&#9662;';
+                }
+            };
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleDropdownClick);
+            });
+
+            document.addEventListener('click', () => {
+                if (window.innerWidth >= 768) {
+                    closeAllDropdowns(null);
+                }
+            });
+        });
+    </script>
+    <div class="Message-Box" id="Message-Box">
+        <button id="Close-Btn" onclick="CloseMessage()"></button>
+        <p><strong id="Message-Title"></strong></p>
+        <p id="Message-text"></p>
+    </div>
+
+
+    <div class="contact-container">
+        <div class="content-subcontainer">
+            <header>
+                <h1 class="logo">FASHIONYFY</h1>
+            </header>
+
+            <div class="sections-container">
+                <section class="contact-info">
+                    <h2>Reach Out to Our Studio</h2>
+                    <div class="info-text">
+                        <i class="fas fa-envelope"></i>
+                        <p>EMAIL: info@fashionyfy.com</p>
+                    </div>
+                    <div class="info-text">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>PHONE: +92 0321198756</p>
+                    </div>
+                    <div class="info-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>STUDIO: 123 Fashion north nazmabad, NY, NY 10001</p>
+                    </div>
+
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </section>
+
+                <section class="contact-form">
+                    <h2>Contact Form</h2>
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name">
+                            <p id="Username_Error">Username is Required</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email Address</label>
+                            <input type="email" id="email" name="email">
+                            <p id="Email_Error">Email Address is Required</p>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject of Inquiry</label>
+                            <input type="text" id="subject" name="subject">
+                            <p id="Subject_Error">Subject is Required</p>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="6"></textarea>
+                            <p id="Message_Error">Message is Required</p>
+
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="Form_Check()">Send Message</button>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <section class="map-section">
+                <h2>Our Location</h2>
+                <div class="map-container">
+                    <iframe title="Fashionyfy Studio Location"
+                        src="https://maps.google.com/maps?q=123%20Fashion%20Ave,%20New%20York%20City&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
+                <p class="map-caption">Visit our main studio, conveniently located in the New York Fashion District.</p>
+            </section>
+        </div>
+    </div>
+     <script
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"
+            ></script>
+    
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+                crossorigin="anonymous"
+            ></script>
+
+
+             <footer id="footer">
+        <div class="container">
+            <div id="footer-grid">
+                <div class="footer-col">
+                    <h5>About</h5>
+                    <p>Fashionify is Pakistan’s go-to place for top fashion brands and beauty favorites like Khaadi, Gul
+                        Ahmed, Sana Safinaz, and Lakmé.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Contact Us</h5>
+                    <p><i class="fa-solid fa-location-dot"></i> Fashionify Studio, Karachi, Pakistan</p>
+                    <p><i class="fa-solid fa-phone"></i> +92-300 9227559</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@fashionify.com</p>
+                    <p>
+                        <a href="https://www.instagram.com/fash_nify " target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Zamair%20Khan" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-col" >
+                    <h5>Quick Links</h5>
+                    <p><a href="khaadi_shop.html" style="text-decoration: none; color: #ffffff;">Khaadi Collection</a></p>
+                    <p><a href="Gul_Ahmed_shop.html" style="text-decoration: none; color: #ffffff;">Gul Ahmed Lawn</a></p>
+                    <p><a href="Sana_Safinaz_shop.html" style="text-decoration: none; color: #ffffff;">Sana Safinaz Wear</a></p>
+                    <p><a href="Lakmé_shop.html" style="text-decoration: none; color: #ffffff;">Lakmé Beauty</a></p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p><i class="fa-regular fa-copyright"></i> 2025 Fashionify. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

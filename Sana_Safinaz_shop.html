@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashionify | Gul_Ahmed</title>
+
+    <script src=></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #edecc7;
+            scroll-behavior: smooth;
+        }
+
+        .color-swatch-active {
+            border: 3px solid #006464;
+            box-shadow: 0 0 0 2px #edecc7;
+        }
+         :root {
+            
+            --main-dark: #333333; 
+            --main-blue: #006464;
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC;
+            --main-blue-light: #70c4c4;
+        }
+
+          #footer {
+            background: var(--main-dark);
+            color: white;
+            padding: 3rem 0 1rem 0;
+            margin-top: 3rem;
+        }
+
+        #footer-grid {
+            display: grid;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-col h5 {
+            border-bottom: 2px solid var(--main-blue);
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col i {
+            color: var(--main-blue);
+            margin-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            #about-text {
+                flex-direction: row;
+            }
+
+            #values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+                :root {
+            --main-dark: #333333; 
+            --main-blue: #006464; 
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC;
+            --main-blue-light: #70c4c4;
+        }
+       .navbar {
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--main-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand img {
+            height: 40px; 
+            width: auto;
+            border-radius: 4px;
+            margin-right: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+        }
+        
+        .menu-icon:hover, .menu-icon:focus {
+            background-color: var(--main-blue);
+        }
+        
+        .menu-icon-svg {
+            height: 24px;
+            width: 24px;
+            stroke: var(--main-dark);
+            transition: stroke 0.2s;
+        }
+        
+        .menu-icon:hover .menu-icon-svg, 
+        .menu-icon:focus .menu-icon-svg,
+        .menu-icon.active .menu-icon-svg {
+            stroke: var(--bg-light);
+        }
+
+        .close-icon { display: none; }
+        .menu-icon.active .hamburger { display: none; }
+        .menu-icon.active .close-icon { display: block; }
+
+
+        .nav-links {
+            display: none; 
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 8px 12px 12px;
+        }
+
+        .nav-links.is-open {
+            display: block;
+        }
+
+        .nav-link {
+            display: block; 
+            color: var(--main-dark);
+            font-weight: 500;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-light);
+            background-color: var(--main-blue);
+        }
+
+        .cta-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            background-color: var(--main-blue);
+            color: var(--bg-light);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--main-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu {
+            position: relative;
+            user-select: none;
+            padding: 10px 12px; 
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-menu:hover {
+             background-color: rgba(0, 100, 100, 0.1);
+        }
+        
+        .dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.15); 
+        }
+
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 4px 0;
+            z-index: 20;
+            border-radius: 8px;
+            top: 100%; 
+            left: 0;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .dropdown-menu.open > .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative; 
+        }
+
+        .dropdown-link:hover {
+            background-color: rgba(0, 100, 100, 0.1);
+            color: var(--main-dark);
+        }
+
+        .nested-dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.2);
+        }
+
+        .nested-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            min-width: 150px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            z-index: 30;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            padding: 4px 0;
+        }
+
+        .nested-dropdown-menu.open > .nested-content {
+            display: block;
+        }
+
+        .nested-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nested-link:hover {
+            background-color: rgba(0, 100, 100, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                top: auto;
+                box-shadow: none;
+                padding: 0;
+                background-color: transparent;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-link, .dropdown-menu {
+                display: inline-flex;
+                margin-bottom: 0;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                display: block; 
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                border: none;
+                padding-left: 15px;
+            }
+
+            .dropdown-link {
+                padding-left: 30px;
+            }
+
+            .nested-content {
+                position: static; 
+                box-shadow: none;
+                min-width: 100%;
+                border: none;
+                padding: 0;
+                padding-left: 15px;
+            }
+
+            .nested-link {
+                padding-left: 45px;
+            }
+        }
+
+        
+        .Banner-Image {
+            height: 500px;
+            background-image: url(Images/unnamed\ \(12\).jpg);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 30px;
+            border-bottom: 6px solid #006464;
+        }
+
+
+
+        .banner-text {
+            z-index: 10;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .banner-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+        .Add-Cart{
+            outline: none;
+            border: none;
+            transition: all 0.5s ease;
+            border: 1px solid #006464;
+            background-color: transparent !important;
+            color: #006464 !important;
+            font-weight: bold;
+        }
+        .Add-Cart:hover{
+            background-color: #006464 !important;
+            color: #edecc7 !important;
+        }
+        .card{
+           transition: all 0.3s ease;
+        }
+        .card:hover{
+            transform: scale(1.05);
+        }
+        #Price-Range:focus{
+            box-shadow: none !important;   
+            border: 1px solid black !important;  
+        }
+        
+        #Continue-Shopping:hover{
+            background-color: gray !important;
+            color: white !important; 
+        }
+        .product-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            background-color: #fff;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: scale(1.03);
+        }
+
+        .Product-Img {
+            overflow: hidden;
+        }
+
+        .Product-Img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .card-body h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--Light-Purple);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .card-text {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--Dark-Purple);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .-Add-Cart-Btn {
+          outline: none;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            border: 1px solid #006464;
+            background-color: transparent !important;
+            color: #006464 !important;
+            font-weight: bold;
+        }
+
+        .-Add-Cart-Btn:hover {
+          background-color: #006464 !important;
+          color: #edecc7 !important;
+            
+        }
+
+        .product-header-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--Dark-Purple);
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        
+        .product-modal-content {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid #e5e7eb;
+        }
+
+        .modal-image-container {
+            background-color: #f9fafb;
+            padding: 4rem 2rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #e5e7eb;
+            box-sizing: border-box;
+        }
+
+        .modal-details {
+            padding: 3rem;
+        }
+
+        .product-name-modal {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #1f2937;
+        }
+
+        .product-price-modal {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--Light-Purple);
+            
+            margin-right: 1rem;
+        }
+
+        .product-old-price-modal {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+        }
+
+        .product-short-desc {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .product-feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .product-feature-list li {
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-feature-list li span {
+            color: #10b981;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .buy-now-modal-btn,
+        #downloadWordBtn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--Light-Purple);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            text-decoration: none;
+            
+            margin-right: 10px;
+        }
+
+        .buy-now-modal-btn {
+            background-color: #333;
+            
+        }
+        #Quick_View{
+          
+          outline: none;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            border: 1px solid #006464;
+            background-color: #006464 !important;
+            color: white !important;
+            font-weight: bold;
+          }
+        
+
+            #Quick_View:hover{
+          background-color: transparent !important;
+          color:  #006464 !important;
+            
+        
+        }
+        #modalAddToCartBtn{
+          outline: none;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            border: 1px solid #006464;
+            background-color: #006464 !important;
+            color: white !important;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        #Buy_now:hover{
+          background: #edecc7 !important;
+          color:  #006464 !important;
+        }
+        </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            
+            <a href="#" class="brand" style="margin-left: -30%;">
+                <img src="Images/logo.png" alt="Company Logo">
+                FASHNIFY
+            </a>
+
+            <button id="mobile-menu-button" class="menu-icon" aria-expanded="false" aria-controls="nav-links">
+               
+                
+            </button>
+            
+            <div class="nav-links" id="nav-links" style="margin-right: 10%;"> 
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <div class="nav-link dropdown-menu" id="brands-dropdown-toggle">
+                  Brands 
+                  <span class="dropdown-arrow primary-arrow">&#9662;</span>
+                  
+                  <div class="dropdown-content">
+                    
+            
+                              <a href="Gul_Ahmed_shop.html" class="nested-link">Gul_Ahmed</a>
+                              <a href="Lakmé_shop.html" class="nested-link">Lakmé</a>
+                              <a href="khaadi_shop.html" class="nested-link">Khaadi</a>
+                              <a href="Sana_Safinaz_shop.html" class="nested-link">Sana_Safinaz</a>
+                       
+                  </div>
+              </div>
+                   
+               
+
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Contact.html" class="nav-link">Contact</a>
+                <a href="feedback.html" class="nested-link">Feedback</a>
+                
+               
+            </div>
+        </div>
+         <a href="Register.html" class="cta-button" style="margin-right: 10px; text-decoration: none;">
+                    Sign Up
+         </a>
+    </nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.getElementById('nav-links'); 
+            const dropdownToggles = document.querySelectorAll('.dropdown-menu, .nested-dropdown-menu');
+            
+            const toggleMobileMenu = () => {
+                navLinks.classList.toggle('is-open');
+                mobileButton.classList.toggle('active');
+                const isExpanded = mobileButton.classList.contains('active');
+                mobileButton.setAttribute('aria-expanded', isExpanded);
+                if (!isExpanded) {
+                    closeAllDropdowns(null);
+                }
+            };
+            
+            if (mobileButton) {
+                mobileButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            
+            const closeAllDropdowns = (currentElement) => {
+                document.querySelectorAll('.dropdown-menu.open, .nested-dropdown-menu.open').forEach(el => {
+                    if (el !== currentElement && !el.contains(currentElement)) {
+                         el.classList.remove('open');
+                         if (el.id === 'brands-dropdown-toggle') {
+                             el.querySelector('.primary-arrow').innerHTML = '&#9662;'; 
+                         }
+                    }
+                });
+            };
+
+            const handleDropdownClick = (e) => {
+                e.stopPropagation();
+
+                const parentDropdown = e.currentTarget;
+                const wasOpen = parentDropdown.classList.contains('open');
+
+                closeAllDropdowns(parentDropdown);
+
+                if (!wasOpen) {
+                    parentDropdown.classList.add('open');
+                } else {
+                    parentDropdown.classList.remove('open');
+                }
+
+                if (parentDropdown.id === 'brands-dropdown-toggle') {
+                    const arrow = parentDropdown.querySelector('.primary-arrow');
+                    arrow.innerHTML = parentDropdown.classList.contains('open') ? '&#9650;' : '&#9662;';
+                }
+            };
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleDropdownClick);
+            });
+
+            document.addEventListener('click', () => {
+                if (window.innerWidth >= 768) {
+                    closeAllDropdowns(null);
+                }
+            });
+        });
+    </script>
+    <div class="Banner-Image">
+        <div class="banner-text">
+            
+        </div>
+    </div>
+
+
+  <div class="container-fluid py-4">
+  <div class="row">
+    
+    <aside class="col-lg-3 col-md-4 mb-4" >
+      <div class=" p-4 sticky-top" style="border-radius: 10px; box-shadow: 4px 0px gray; top: 30px; background-color: white;">
+        <h5 class="fw-bold  pb-2 mb-4" style="border-bottom: 1px solid black;">Refine Results</h5>
+
+        <div class="mb-4 pb-3" style="border-bottom: 1px solid black;">
+          <h6 class="fw-bold"><i class="fas fa-tag me-2" style="color: #006464;"></i>Collections</h6>
+          <div class="mt-2">
+           <span class="badge rounded-pill " style="background-color: #006464;">All Products</span>
+           
+            <span class="badge rounded-pill " style="background-color: #006464;">Best Sellers</span>
+            <span class="badge rounded-pill " style="background-color: #006464;">New Arrivals</span>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="mb-4 pb-3" style="border-bottom: 1px solid black;">
+          <h6 class="fw-bold"><i class="fas fa-cubes me-2"  style="color: #006464;"></i>Categories</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked>
+            <label class="form-check-label">All Products </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" >
+            <label class="form-check-label">Bottoms</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Outerwear</label>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-4  pb-3"style="border-bottom: 1px solid black;">
+          <h6 class="fw-bold"><i class="fas fa-dollar-sign  me-2" style="color: #006464;"></i>Price Range</h6>
+          <div class="d-flex align-items-center gap-2">
+            <input type="number" class="form-control" id="Price-Range" value="9">
+            <span>to</span>
+            <input type="number" id="Price-Range" class="form-control">
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="  pb-3" style="border-bottom: 1px solid black;">
+          <h6 class="fw-bold"><i class="fas fa-ruler-horizontal  me-2" style="color: #006464;"></i>Size</h6>
+          <div class="gap-2">
+            <button class="btn btn-outline-secondary btn-sm">XS</button>
+            <button class="btn btn-outline-secondary btn-sm">S</button>
+            <button class="btn btn-outline-secondary btn-sm">M</button>
+            <button class="btn btn-outline-secondary btn-sm">L</button>
+            <button class="btn btn-outline-secondary btn-sm">XL</button>
+          </div>
+        </div>
+
+        
+        <!-- Delivery -->
+        <div class="pt-4">
+          <h6 class="fw-bold"><i class="fas fa-truck  me-2" style="color: #006464;"></i>Delivery Options</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked>
+            <label class="form-check-label">Free Shipping</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Same Day Delivery</label>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex mt-3" style="justify-content: space-between;">
+          <button class="btn btn-outline-secondary btn-sm">Reset Filters</button>
+          <button class="btn  btn-sm" style="background-color: #006464; color: white;">Apply Filters</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Product Section -->
+    <section class="col-lg-9 col-md-8">
+      <div class="d-flex justify-content-between align-items-center  p-3 mb-4" style="border-radius: 10px; color: #ffffff; background-color: #006464;">
+        <p class="mb-0">Showing <strong>120 results</strong> from 120</p>
+
+        <div class="row mb-4">
+          <div class="col-12 col-md-6 offset-md-3" style=" width: 100%; margin-left: -30%; align-items: center !important; padding-top: 10%;">
+              <input type="text" id="productSearchInput" class="form-control"
+                  placeholder="Search by name, price, or category...">
+          </div>
+      </div>
+        <select class="form-select w-auto">
+          <option>Relevance</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Rating</option>
+        </select>
+        
+      </div>
+
+      <div class="row" id="productGrid">
+      </div>
+    </section>
+
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+
+   
+        <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="product-modal-content">
+                    <div class="col-md-6 modal-image-container">
+                        <img id="modalProductImage" src="Images/Background.png" class="img-fluid" alt="Product Image">
+                    </div>
+
+                    <div class="col-md-6 modal-details">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+
+                        <h1 id="modalProductName" class="product-name-modal mt-3">Product Name</h1>
+
+                        <div class="d-flex align-items-baseline mb-3">
+                            <p id="modalProductPrice" class="product-price-modal">PKR 0,000</p>
+                            <p id="modalProductOldPrice" class="product-old-price-modal d-none">PKR 0,000</p>
+                        </div>
+
+                        <h2 class="h5 fw-bold text-dark mb-2">Product Details</h2>
+                        <p id="modalProductShortDescription" class="product-short-desc">Short description will be added
+                            here.</p>
+
+                        <ul id="modalProductFeatures" class="product-feature-list mt-3">
+                            </ul>
+
+                        <div class="d-flex gap-3 justify-content-center mt-4">
+                            <button id="modalAddToCartBtn" class="add-to-cart-modal-btn">Add to Cart</button>
+                            <a href="#" class="buy-now-modal-btn" id="Buy_now">Buy Now</a>
+                            <button id="downloadWordBtn" class="buy-now-modal-btn"
+                                style="background-color: darkgreen;">Detail in WORD</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div
+    class="modal fade"
+    id="modalId"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalTitleId"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title " id="modalTitleId">
+                    Added to Cart
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+
+            <div class="modal-body d-flex align-items-center">
+        <img src="Images/unnamed.jpg" class="img-fluid rounded me-3" alt="Product" style="width: 120px; height: auto; object-fit: cover;">
+        <div>
+          <h6 class="fw-bold mb-1">Grace Look Women's Stylish Top</h6>
+          <p class="mb-1 text-muted">PKR 3,290</p>
+          <p class="text-success mb-0"><i class="fas fa-check-circle me-1"></i> Item successfully added to your cart!</p>
+        </div>
+      </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary "
+                    data-bs-dismiss="modal"
+                    style="background-color: transparent; color: gray;"
+                    id="Continue-Shopping"
+                >
+                    Continue Shoping
+                </button>
+                <button type="button" class="btn btn-success">Go to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var modalId = document.getElementById('modalId');
+
+    modalId.addEventListener('show.bs.modal', function (event) {
+          let button = event.relatedTarget;
+          let recipient = button.getAttribute('data-bs-whatever');
+
+    });
+
+    
+</script>
+ <footer id="footer">
+        <div class="container">
+            <div id="footer-grid">
+                <div class="footer-col">
+                    <h5>About</h5>
+                    <p>Fashionify is Pakistan’s go-to place for top fashion brands and beauty favorites like Khaadi, Gul
+                        Ahmed, Sana Safinaz, and Lakmé.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Contact Us</h5>
+                    <p><i class="fa-solid fa-location-dot"></i> Fashionify Studio, Karachi, Pakistan</p>
+                    <p><i class="fa-solid fa-phone"></i> +92-300 9227559</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@fashionify.com</p>
+                    <p>
+                        <a href="https://www.instagram.com/fash_nify " target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Zamair%20Khan" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="footer-col" >
+                    <h5>Quick Links</h5>
+                    <p><a href="khaadi_shop.html" style="text-decoration: none; color: #ffffff;">Khaadi Collection</a></p>
+                    <p><a href="Gul_Ahmed_shop.html" style="text-decoration: none; color: #ffffff;">Gul Ahmed Lawn</a></p>
+                    <p><a href="Sana_Safinaz_shop.html" style="text-decoration: none; color: #ffffff;">Sana Safinaz Wear</a></p>
+                    <p><a href="Lakmé_shop.html" style="text-decoration: none; color: #ffffff;">Lakmé Beauty</a></p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p><i class="fa-regular fa-copyright"></i> 2025 Fashionify. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                  <h5 class="modal-title" id="cartModalLabel"><i class="bi bi-cart-fill me-2"></i> Your Shopping Cart <span
+                              id="cartItemCount" class="badge bg-light text-dark ms-2">0</span></h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div id="cartContent">
+                      <p class="text-center text-muted" id="emptyCartMessage">Your cart is currently empty.</p>
+                  </div>
+                  <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                      <h4 class="fw-bold">Total: <span id="cartTotal">PKR 0</span></h4>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Continue
+                      Shopping</button>
+                  <button type="button" class="btn btn-success">Proceed to Checkout</button>
+              </div>
+          </div>
+      </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+     const productData = {
+  "Product 1": {
+    "name": "Ethereal Grace Printed Kurta",
+    "price": 7490,
+    "oldPrice": null,
+    "image": "Images/unnamed (40).jpg",
+    "shortDesc": "Top Wear",
+    "features": ["Top Wear", "Stylish", "Comfortable"],
+    "currency": "PKR"
+  },
+  "Product 2": {
+    "name": "Amber Dusk 3-Piece Lawn Suit",
+    "price": 7950,
+    "oldPrice": null,
+    "image": "Images/unnamed (41).jpg",
+    "shortDesc": "Unstitched Collection",
+    "features": ["Unstitched Collection", "Lightweight", "Elegant Design"],
+    "currency": "PKR"
+  },
+  "Product 3": {
+    "name": "Crimson Velvet Embroidered Shawl Set",
+    "price": 10990,
+    "oldPrice": null,
+    "image": "Images/unnamed (42).jpg",
+    "shortDesc": "Winter Collection",
+    "features": ["Winter Collection", "Embroidered", "Warm & Stylish"],
+    "currency": "PKR"
+  },
+  "Product 4": {
+    "name": "Golden Orchid Chiffon Dress",
+    "price": 14990,
+    "oldPrice": null,
+    "image": "Images/unnamed (43).jpg",
+    "shortDesc": "Luxury Pret",
+    "features": ["Luxury Pret", "Flowy Design", "Premium Fabric"],
+    "currency": "PKR"
+  },
+  "Product 5": {
+    "name": "Midnight Garden Embroidered Shirt",
+    "price": 8950,
+    "oldPrice": null,
+    "image": "Images/unnamed (44).jpg",
+    "shortDesc": "Top Wear",
+    "features": ["Top Wear", "Embroidered", "Stylish Casual"],
+    "currency": "PKR"
+  },
+  "Product 6": {
+    "name": "Ivory Mirage Printed Lawn",
+    "price": 6490,
+    "oldPrice": null,
+    "image": "Images/unnamed (45).jpg",
+    "shortDesc": "Unstitched Collection",
+    "features": ["Unstitched Collection", "Lightweight", "Printed Fabric"],
+    "currency": "PKR"
+  },
+  "Product 7": {
+    "name": "Emerald Mist Khaddar Suit",
+    "price": 8750,
+    "oldPrice": null,
+    "image": "Images/unnamed (46).jpg",
+    "shortDesc": "Winter Collection",
+    "features": ["Winter Collection", "Khaddar Fabric", "Warm & Stylish"],
+    "currency": "PKR"
+  },
+  "Product 8": {
+    "name": "Moonlight Charm Silk Kurta",
+    "price": 12450,
+    "oldPrice": null,
+    "image": "Images/unnamed (47).jpg",
+    "shortDesc": "Luxury Pret",
+    "features": ["Luxury Pret", "Silk Fabric", "Elegant Design"],
+    "currency": "PKR"
+  },
+  "Product 9": {
+    "name": "Blush Aura Stitched 2-Piece Set",
+    "price": 9690,
+    "oldPrice": null,
+    "image": "Images/unnamed (48).jpg",
+    "shortDesc": "Top Wear",
+    "features": ["Top Wear", "Stitched", "Stylish 2-Piece"],
+    "currency": "PKR"
+  },
+  "Product 10": {
+    "name": "Sapphire Bloom Embroidered Unstitched Suit",
+    "price": 8250,
+    "oldPrice": null,
+    "image": "Images/unnamed (49).jpg",
+    "shortDesc": "Unstitched Collection",
+    "features": ["Unstitched Collection", "Embroidered", "Stylish Fabric"],
+    "currency": "PKR"
+  },
+  "Product 11": {
+    "name": "Royal Rouge Wool Blend Ensemble",
+    "price": 9450,
+    "oldPrice": null,
+    "image": "Images/unnamed (50).jpg",
+    "shortDesc": "Winter Collection",
+    "features": ["Winter Collection", "Wool Blend", "Elegant Ensemble"],
+    "currency": "PKR"
+  },
+  "Product 12": {
+    "name": "Opulent Bloom Embellished Ensemble",
+    "price": 16990,
+    "oldPrice": null,
+    "image": "Images/unnamed (51).jpg",
+    "shortDesc": "Luxury Pret",
+    "features": ["Luxury Pret", "Embellished", "Premium Design"],
+    "currency": "PKR"
+  }
+}
+  
+
+     
+      let cart = [];
+      let currentModalProductId = null; 
+  
+     
+  
+      const formatPrice = (price) => `PKR ${price.toLocaleString('en-US')}`;
+  
+     
+      const updateCartCount = () => {
+          const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+          $('#cartItemCount, #navCartItemCount').text(totalItems);
+         
+          if (totalItems > 0) {
+              $('#navCartItemCount').removeClass('bg-secondary').addClass('bg-danger');
+          } else {
+              $('#navCartItemCount').removeClass('bg-danger').addClass('bg-secondary');
+          }
+      };
+  
+  
+      const addToCart = (productId) => {
+          const existingItem = cart.find(item => item.id === productId);
+          if (existingItem) {
+              existingItem.qty += 1; 
+          } else {
+              cart.push({ id: productId, qty: 1 }); 
+          }
+          updateCartCount();
+          
+          console.log(`${productData[productId].name} added to cart!`);
+      };
+  
+  
+      const removeFromCart = (productId) => {
+          cart = cart.filter(item => item.id !== productId);
+          renderCart();
+          updateCartCount();
+      };
+  
+      const changeQuantity = (productId, change) => {
+          const item = cart.find(item => item.id === productId);
+          if (item) {
+              item.qty += change;
+              if (item.qty <= 0) {
+                  removeFromCart(productId);
+              } else {
+                  renderCart(); 
+              }
+          }
+          updateCartCount();
+      };
+  
+   
+      const renderCart = () => {
+          const cartContentDiv = $('#cartContent');
+          const emptyMessage = $('#emptyCartMessage');
+          let total = 0;
+          let cartHtml = '';
+  
+          if (cart.length === 0) {
+              emptyMessage.show();
+              cartContentDiv.html(''); 
+              $('#cartTotal').text(formatPrice(0));
+              return;
+          }
+  
+          emptyMessage.hide();
+  
+          cart.forEach(item => {
+              const product = productData[item.id];
+              if (!product) return; 
+  
+              const itemTotal = product.price * item.qty;
+              total += itemTotal;
+  
+           
+              cartHtml += `
+                  <div class="row align-items-center mb-3 pb-3 border-bottom">
+                      <div class="col-2">
+                          <img src="${product.image}" alt="${product.name}" class="img-fluid rounded">
+                      </div>
+                      <div class="col-4">
+                          <h6 class="mb-0 fw-bold">${product.name}</h6>
+                          <small class="text-muted">${formatPrice(product.price)}</small>
+                      </div>
+                      <div class="col-3 d-flex align-items-center">
+                          <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity('${item.id}', -1)">-</button>
+                          <span class="mx-2">${item.qty}</span>
+                          <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity('${item.id}', 1)">+</button>
+                      </div>
+                      <div class="col-2 text-end">
+                          <span class="fw-bold">${formatPrice(itemTotal)}</span>
+                      </div>
+                      <div class="col-1 text-center">
+                          <button class="btn btn-sm btn-danger" onclick="removeFromCart('${item.id}')"><i class="bi bi-x"></i></button>
+                      </div>
+                  </div>
+              `;
+          
+          });
+  
+          cartContentDiv.html(cartHtml);
+          $('#cartTotal').text(formatPrice(total));
+          updateCartCount();
+      };
+  
+      const renderProducts = () => {
+          const productGrid = $('#productGrid');
+          let productsHtml = '';
+  
+          for (const productId in productData) {
+              const product = productData[productId];
+              const priceHtml = product.oldPrice 
+                  ? `<p class="price">${formatPrice(product.price)} <s class="text-muted small">${formatPrice(product.oldPrice)}</s></p>`
+                  : `<p class="price">${formatPrice(product.price)}</p>`;
+  
+              productsHtml += `
+                  <div class="col-6 col-md-3 col-xl-3 product-item" data-product-id="${productId}">
+                      <div class="card product-card">
+                          <div class="Product-Img">
+                              <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                          </div>
+                          <div class="card-body text-center">
+                              <h5 class="card-title">${product.name}</h5>
+                              <p class="card-text text-muted">${product.shortDesc.split('.')[0]}</p>
+                              ${priceHtml}
+                              <a href="#" class="btn -Add-Cart-Btn w-100 mb-2" onclick="addToCart('${productId}'); return false;">
+                                  <i class="bi bi-cart-plus-fill me-1" id="Add-Cart-Button"></i> Add to Cart
+                              </a>
+                              <button class="btn btn-sm btn-outline-secondary w-100" data-bs-toggle="modal"
+                                  data-bs-target="#productDetailModal" data-product-id="${productId}" id="Quick_View">
+                                  Quick View
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              `;
+          }
+          productGrid.html(productsHtml);
+      };
+  
+  
+      $('#productDetailModal').on('show.bs.modal', function (event) {
+          const button = $(event.relatedTarget);
+          const productId = button.data('product-id');
+          const product = productData[productId];
+  
+          if (!product) {
+              console.error('Product not found for ID:', productId);
+              return;
+          }
+  
+          
+          currentModalProductId = productId;
+  
+          $('#modalProductImage').attr('src', product.image).attr('alt', product.name);
+          $('#modalProductName').text(product.name);
+          $('#modalProductPrice').text(formatPrice(product.price));
+          $('#modalProductShortDescription').text(product.shortDesc);
+  
+          const oldPriceElem = $('#modalProductOldPrice');
+          if (product.oldPrice) {
+              oldPriceElem.text(formatPrice(product.oldPrice)).removeClass('d-none');
+          } else {
+              oldPriceElem.addClass('d-none');
+          }
+  
+     
+          const featuresList = $('#modalProductFeatures');
+          featuresList.empty();
+          product.features.forEach(feature => {
+              featuresList.append(`<li><span class="bi bi-check-circle-fill"></span>${feature}</li>`);
+          });
+      });
+      $('#modalAddToCartBtn').on('click', function() {
+          if (currentModalProductId) {
+              addToCart(currentModalProductId);
+              
+          }
+      });
+      
+      
+      const downloadWordFile = (productId) => {
+          const product = productData[productId];
+          if (!product) {
+              alert("Product details not found!");
+              return;
+          }
+  
+    
+          let content = `<h1>${product.name}</h1>`;
+          content += `<p><strong>Price:</strong> ${formatPrice(product.price)}</p>`;
+          if (product.oldPrice) {
+              content += `<p style="text-decoration: line-through;"><strong>Old Price:</strong> ${formatPrice(product.oldPrice)}</p>`;
+          }
+          content += `<p><strong>Description:</strong> ${product.shortDesc}</p>`;
+          content += '<h2>Key Features:</h2><ul>';
+          product.features.forEach(feature => {
+              content += `<li>${feature}</li>`;
+          });
+          content += '</ul>';
+  
+          content += `<p>[Image: ${product.image}]</p>`;
+  
+          const filename = `${product.name.replace(/[^a-z0-9]/gi, '_')}.doc`;
+          const blob = new Blob(['<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>' + product.name + '</title></head><body>' + content + '</body></html>'], {
+              type: 'application/msword'
+          });
+  
+  
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      };
+  
+      document.getElementById('downloadWordBtn').addEventListener('click', () => {
+          if (currentModalProductId) {
+              downloadWordFile(currentModalProductId);
+          }
+      });
+   
+      $(document).ready(function() {
+          renderProducts(); 
+          updateCartCount(); 
+      });
+  
+     
+  $(document).ready(function () {
+      $("#productSearchInput").on("keyup", function () {
+      
+          const searchTerm = $(this).val().toLowerCase();
+  
+          $(".product-item").each(function () {
+              
+              const productText = $(this).find('.card-body').text().toLowerCase();
+  
+           
+              if (productText.includes(searchTerm)) {
+                
+                  $(this).show();
+              } else {
+                  
+                  $(this).hide();
+              }
+          });
+      });
+  });
+      </script> 
+
+</body>
+
+</html>

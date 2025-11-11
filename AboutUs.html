@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashionify | About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        :root {
+            --main-dark: #333333;
+            --main-blue: #006464;
+            --bg-light: #edecc7;
+            --page-bg:  black;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--page-bg);
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        
+        :root {
+            --main-dark: #006464; 
+            --main-blue: #006464; 
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC; 
+        }
+       .navbar {
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--main-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand img {
+            height: 40px;
+            width: auto;
+            border-radius: 4px;
+            margin-right: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+        }
+        
+        .menu-icon:hover, .menu-icon:focus {
+            background-color: var(--main-blue);
+        }
+        
+        .menu-icon-svg {
+            height: 24px;
+            width: 24px;
+            stroke: var(--main-dark);
+            transition: stroke 0.2s;
+        }
+        
+        .menu-icon:hover .menu-icon-svg, 
+        .menu-icon:focus .menu-icon-svg,
+        .menu-icon.active .menu-icon-svg {
+            stroke: var(--bg-light);
+        }
+
+        .close-icon { display: none; }
+        .menu-icon.active .hamburger { display: none; }
+        .menu-icon.active .close-icon { display: block; }
+
+
+        .nav-links {
+            display: none; 
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 8px 12px 12px;
+        }
+
+        .nav-links.is-open {
+            display: block;
+        }
+
+        .nav-link {
+            display: block; 
+            color: var(--main-dark);
+            font-weight: 500;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-light);
+            background-color: var(--main-blue);
+        }
+
+        .cta-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            background-color: var(--main-blue);
+            color: var(--bg-light);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--main-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu {
+            position: relative;
+            user-select: none;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-menu:hover {
+             background-color: rgba(0, 100, 100, 0.1); 
+        }
+        
+        .dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.15); 
+        }
+
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 4px 0;
+            z-index: 20;
+            border-radius: 8px;
+            top: 100%; 
+            left: 0;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .dropdown-menu.open > .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative; 
+        }
+
+        .dropdown-link:hover {
+            background-color: rgba(0, 100, 100, 0.1);
+            color: var(--main-dark);
+        }
+
+        .nested-dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.2); 
+        }
+
+        .nested-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%; 
+            min-width: 150px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            z-index: 30;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            padding: 4px 0;
+        }
+
+        .nested-dropdown-menu.open > .nested-content {
+            display: block;
+        }
+
+        .nested-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nested-link:hover {
+            background-color: rgba(0, 100, 100, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                top: auto;
+                box-shadow: none;
+                padding: 0;
+                background-color: transparent;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-link, .dropdown-menu {
+                display: inline-flex;
+                margin-bottom: 0;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                display: block; 
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .dropdown-content {
+                position: static; 
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                border: none;
+                padding-left: 15px;
+            }
+
+            .dropdown-link {
+                padding-left: 30px;
+            }
+
+            .nested-content {
+                position: static; 
+                box-shadow: none;
+                min-width: 100%;
+                border: none;
+                padding: 0;
+                padding-left: 15px;
+            }
+
+            .nested-link {
+                padding-left: 45px; 
+            }
+        }
+
+ 
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 1rem;
+        }
+
+        #page-header {
+            background-color: var(--main-dark);
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        #page-header h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--main-dark);
+        }
+
+        #about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.4s;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+
+        #about-text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            font-size: 1rem;
+        }
+
+        #About-mission {
+            background: white;
+            padding: 3rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .mission-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .mission-block h3,
+        .vision-block h3 {
+            font-size: 1.6rem;
+            color: var(--main-blue);
+            border-bottom: 2px solid var(--main-dark);
+            padding-bottom: 5px;
+            margin-bottom: 1rem;
+        }
+
+        #values-section {
+            margin-top: 3rem;
+        }
+
+        .values-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--main-dark);
+        }
+
+        #values-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 100, 100, 0.15); 
+        }
+
+        .value-card i {
+            font-size: 2.2rem;
+            color: var(--main-blue);
+            margin-bottom: 1rem;
+        }
+
+        #EthicalGrowth-section {
+            background-color: var(--bg-light); 
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+            border-radius: 12px;
+        }
+
+        .EthicalGrowth-point {
+            background: white; 
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .EthicalGrowth-point h4 {
+            color: var(--main-dark);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+
+        .EthicalGrowth-point h4 i {
+            color: var(--main-blue);
+        }
+
+        #brands-details {
+            margin-top: 4rem;
+        }
+
+        .brands-heading {
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--main-dark);
+        }
+
+        .brands-card {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            padding: 1.2rem;
+            border-left: 5px solid var(--main-blue);
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .brands-card i {
+            color: var(--main-blue);
+            font-size: 1.4rem;
+        }
+
+        #footer {
+            background: var(--main-dark);
+            color: white;
+            padding: 3rem 0 1rem 0;
+            margin-top: 3rem;
+        }
+
+        #footer-grid {
+            display: grid;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-col h5 {
+            border-bottom: 2px solid var(--main-blue);
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col i {
+            color: var(--main-blue);
+            margin-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            #about-text {
+                flex-direction: row;
+            }
+
+            #values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .team-card {
+            background-color: white; 
+            border: 3px solid var(--bg-section);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+            height: 100%;
+            border-top: 3px solid transparent;
+            margin: 1px;
+            
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 17px 24px rgba(0, 100, 100, 0.3); 
+            border-top: 3px solid var(--main-blue);
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--main-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-batch {
+            color: var(--main-blue);
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+        
+        .section__title {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--main-dark);
+        }
+
+        .section__text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        .nav-link:hover{
+            background-color: #006464 !important;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            
+            <a href="#" class="brand" style="margin-left: -30%;">
+                <img src="Images/logo.png" alt="Company Logo">
+                FASHNIFY
+            </a>
+
+            <button id="mobile-menu-button" class="menu-icon" aria-expanded="false" aria-controls="nav-links">
+               
+                
+            </button>
+            
+            <div class="nav-links" id="nav-links" style="margin-right: 10%;"> 
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <div class="nav-link dropdown-menu" id="brands-dropdown-toggle">
+                  Brands 
+                  <span class="dropdown-arrow primary-arrow">&#9662;</span>
+                  
+                  <div class="dropdown-content">
+                    
+            
+                              <a href="Gul_Ahmed_shop.html" class="nested-link">Gul_Ahmed</a>
+                              <a href="Lakmé_shop.html" class="nested-link">Lakmé</a>
+                              <a href="khaadi_shop.html" class="nested-link">Khaadi</a>
+                              <a href="Sana_Safinaz_shop.html" class="nested-link">Sana_Safinaz</a>
+                       
+                  </div>
+              </div>
+                   
+               
+
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Contact.html" class="nav-link">Contact</a>
+                <a href="feedback.html" class="nested-link">Feedback</a>
+                
+               
+            </div>
+        </div>
+         <a href="Register.html" class="cta-button" style="margin-right: 10px; text-decoration: none;">
+                    Sign Up
+         </a>
+    </nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.getElementById('nav-links'); 
+            const dropdownToggles = document.querySelectorAll('.dropdown-menu, .nested-dropdown-menu');
+            
+            // --- Mobile Menu Toggle ---
+            const toggleMobileMenu = () => {
+                navLinks.classList.toggle('is-open');
+                mobileButton.classList.toggle('active');
+                const isExpanded = mobileButton.classList.contains('active');
+                mobileButton.setAttribute('aria-expanded', isExpanded);
+                if (!isExpanded) {
+                    closeAllDropdowns(null);
+                }
+            };
+            
+            if (mobileButton) {
+                mobileButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            
+            const closeAllDropdowns = (currentElement) => {
+                document.querySelectorAll('.dropdown-menu.open, .nested-dropdown-menu.open').forEach(el => {
+                    if (el !== currentElement && !el.contains(currentElement)) {
+                         el.classList.remove('open');
+                         if (el.id === 'brands-dropdown-toggle') {
+                             el.querySelector('.primary-arrow').innerHTML = '&#9662;'; 
+                         }
+                    }
+                });
+            };
+
+            const handleDropdownClick = (e) => {
+                e.stopPropagation();
+
+                const parentDropdown = e.currentTarget;
+                const wasOpen = parentDropdown.classList.contains('open');
+
+                closeAllDropdowns(parentDropdown);
+
+                if (!wasOpen) {
+                    parentDropdown.classList.add('open');
+                } else {
+                    parentDropdown.classList.remove('open');
+                }
+
+                if (parentDropdown.id === 'brands-dropdown-toggle') {
+                    const arrow = parentDropdown.querySelector('.primary-arrow');
+                    arrow.innerHTML = parentDropdown.classList.contains('open') ? '&#9650;' : '&#9662;';
+                }
+            };
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleDropdownClick);
+            });
+
+            document.addEventListener('click', () => {
+                if (window.innerWidth >= 768) {
+                    closeAllDropdowns(null);
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+ 
+
+    <div id="page-header">
+        <h1>About Us</h1>
+    </div>
+
+    <div class="container" id="about-section">
+        <h2 class="section-title">Welcome to Fashionify</h2>
+
+        <div id="about-text">
+            <div class="about-image">
+                <img src="https://placehold.co/400x550/006464/FFFFFF?text=FASHIONIFY+ELEGANCE"
+                    alt="Fashionify elegance and style">
+            </div>
+
+            <div id="about-text-content">
+                <p><strong>Fashionify</strong> is a modern online fashion platform in Pakistan. We bring together some
+                    of the biggest names in style and beauty so you can shop with ease and confidence.</p>
+                <p>We started in 2022 because we wanted people to find real, good-quality clothes and beauty products
+                    all in one place. Our small team wanted to mix traditional South Asian designs with today’s fashion
+                    vibe.</p>
+                <p>Now, we work with top names like <strong>Khaadi</strong>, <strong>Gul Ahmed</strong>, and
+                    <strong>Sana Safinaz</strong>, plus India’s famous beauty brand <strong>Lakmé</strong>. We’re proud
+                    to share their amazing collections with fashion lovers everywhere.</p>
+            </div>
+        </div>
+
+        <div id="About-mission">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="mission-grid">
+                <div class="mission-block">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>Our mission is to make South Asian fashion easy to find and enjoy. We want to connect people
+                        around the world with the creativity and beauty that comes from our region.</p>
+                </div>
+                <div class="vision-block">
+                    <h3><i class="fas fa-globe-asia"></i> Our Vision</h3>
+                    <p>We dream of becoming the best online fashion space for South Asian style. Fashionify aims to
+                        represent culture, class, and confidence — all in one place.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="values-section">
+            <h3 class="values-heading">Our Core Values</h3>
+            <div id="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Realness</h4>
+                    <p>We only share genuine and original items from our trusted partners. You can always trust what you
+                        buy.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-gem"></i>
+                    <h4>Style</h4>
+                    <p>We carefully pick the most stylish and trendy designs that make you look and feel amazing.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-seedling"></i>
+                    <h4>Growth</h4>
+                    <p>We’re always learning new ways to make shopping simple, fun, and creative for our customers.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="EthicalGrowth-section">
+            <h2 class="section-title">Our Commitment</h2>
+            <div class="EthicalGrowth-point">
+                <h4><i class="fas fa-handshake"></i> Helping Artisans</h4>
+                <p>We care about the people who make our clothes. Fashionify supports fair work and safe spaces for
+                    everyone who creates these designs.</p>
+            </div>
+            <div class="EthicalGrowth-point">
+                <h4><i class="fas fa-recycle"></i> Eco Choices</h4>
+                <p>We’re trying to use more eco-friendly materials and reduce waste wherever we can.</p>
+            </div>
+            <div class="EthicalGrowth-point">
+                <h4><i class="fas fa-users"></i> Empowering Women</h4>
+                <p>Many of our designs come from women-owned brands. We believe fashion should uplift and empower.</p>
+            </div>
+            <div class="EthicalGrowth-point">
+                <h4><i class="fas fa-truck"></i> Greener Deliveries</h4>
+                <p>We’re improving our delivery process to make it faster and cleaner for the planet.</p>
+            </div>
+        </div>
+
+        <div id="brands-details">
+            <h3 class="brands-heading">Our Brands</h3>
+
+            <div class="brands-card">
+                <i class="fas fa-tshirt"></i>
+                <div>
+                    <h4>Khaadi</h4>
+                    <p>Known for colorful fabrics and stylish ready-to-wear outfits that mix traditional art with modern
+                        looks.</p>
+                </div>
+            </div>
+
+            <div class="brands-card">
+                <i class="fas fa-warehouse"></i>
+                <div>
+                    <h4>Gul Ahmed</h4>
+                    <p>Classic, elegant, and full of variety — Gul Ahmed’s clothes are perfect for any time of the
+                        year.</p>
+                </div>
+            </div>
+
+            <div class="brands-card">
+                <i class="fas fa-crown"></i>
+                <div>
+                    <h4>Sana Safinaz</h4>
+                    <p>Luxury, grace, and confidence. Their outfits bring modern charm and fine detailing together.</p>
+                </div>
+            </div>          
+
+            <div class="brands-card">
+                <i class="fas fa-brush"></i>
+                <div>
+                    <h4>Lakmé</h4>
+                    <p>One of the most loved beauty brands in Asia, known for makeup that enhances natural beauty.</p>
+                </div>
+            </div>
+        </div>
+        <section class="section" data-aos="fade-up">
+            <h2 class="section__title">Meet Our Team: The Fashionify</h2>
+            
+           <div class="row mt-3">
+
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="team-card">
+      <div class="team-image">
+        <img src="Images/Khuzaima.jpg" class="img-fluid rounded" alt="">
+      </div>
+      <h5 class="team-name">Khuzaima</h5>
+      <p class="team-batch">Batch: 2506f</p>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="team-card">
+      <div class="team-image">
+        <img src="Images/M.Hadi.png" class="img-fluid rounded" alt="" height="100% ">
+      </div>
+      <h5 class="team-name">M.Hadi</h5>
+      <p class="team-batch">Batch: 2506f</p>
+    </div>
+  </div>
+
+   <div class="col-lg-3 col-md-6 mb-4">
+    <div class="team-card">
+      <div class="team-image">
+        <img src="Images/Asim.jpg" class="img-fluid rounded" alt="">
+      </div>
+      <h5 class="team-name">Asim</h5>
+      <p class="team-batch">Batch: 2506f</p>
+    </div>
+  </div>
+
+
+   <div class="col-lg-3 col-md-6 mb-4">
+    <div class="team-card">
+      <div class="team-image">
+        <img src="Images/Zamair.jpg" class="img-fluid rounded" alt="">
+      </div>
+      <h5 class="team-name">Zamair</h5>
+      <p class="team-batch">Batch: 2506f</p>
+    </div>
+  </div>
+
+</div>
+
+        </section>
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <div id="footer-grid">
+                <div class="footer-col">
+                    <h5>About</h5>
+                    <p>Fashionify is Pakistan’s go-to place for top fashion brands and beauty favorites like Khaadi, Gul
+                        Ahmed, Sana Safinaz, and Lakmé.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Contact Us</h5>
+                    <p><i class="fa-solid fa-location-dot"></i> Fashionify Studio, Karachi, Pakistan</p>
+                    <p><i class="fa-solid fa-phone"></i> +92-300 9227559</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@fashionify.com</p>
+                    <p>
+                        <a href="https://www.instagram.com/fash_nify " target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Zamair%20Khan" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="footer-col" >
+                    <h5>Quick Links</h5>
+                    <p><a href="khaadi_shop.html" style="text-decoration: none; color: #ffffff;">Khaadi Collection</a></p>
+                    <p><a href="Gul_Ahmed_shop.html" style="text-decoration: none; color: #ffffff;">Gul Ahmed Lawn</a></p>
+                    <p><a href="Sana_Safinaz_shop.html" style="text-decoration: none; color: #ffffff;">Sana Safinaz Wear</a></p>
+                    <p><a href="Lakmé_shop.html" style="text-decoration: none; color: #ffffff;">Lakmé Beauty</a></p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p><i class="fa-regular fa-copyright"></i> 2025 Fashionify. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+     <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('nav-links'); 
+            
+            if (button && menu) {
+                const toggleMenu = () => {
+                    menu.classList.toggle('is-open');
+                    
+                    button.classList.toggle('active');
+
+                    const isExpanded = button.classList.contains('active');
+                    button.setAttribute('aria-expanded', isExpanded);
+                };
+
+                button.addEventListener('click', toggleMenu);
+            } else {
+                console.error("Missing menu button or nav links element.");
+            }
+        });
+    </script>
+</body>
+
+</html>

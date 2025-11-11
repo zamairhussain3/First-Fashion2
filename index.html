@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashionify | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="Assets/Css.css">
+    
+    
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            
+            <a href="#" class="brand" style="margin-left: -30%;">
+                <img src="Images/logo.png" alt="Company Logo">
+                FASHNIFY
+            </a>
+
+            <button id="mobile-menu-button" class="menu-icon" aria-expanded="false" aria-controls="nav-links">
+               
+                
+            </button>
+            
+            <div class="nav-links" id="nav-links" style="margin-right: 10%;"> 
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <div class="nav-link dropdown-menu" id="brands-dropdown-toggle">
+                  Brands 
+                  <span class="dropdown-arrow primary-arrow">&#9662;</span>
+                  
+                  <div class="dropdown-content">
+                    
+            
+                              <a href="Gul_Ahmed_shop.html" class="nested-link">Gul_Ahmed</a>
+                              <a href="Lakmé_shop.html" class="nested-link">Lakmé</a>
+                              <a href="khaadi_shop.html" class="nested-link">Khaadi</a>
+                              <a href="Sana_Safinaz_shop.html" class="nested-link">Sana_Safinaz</a>
+                       
+                  </div>
+              </div>
+                   
+               
+
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Contact.html" class="nav-link">Contact</a>
+                <a href="feedback.html" class="nested-link">Feedback</a>
+                
+               
+            </div>
+        </div>
+         <a href="Register.html" class="cta-button" style="margin-right: 10px; text-decoration: none;">
+                    Sign Up
+         </a>
+    </nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.getElementById('nav-links'); 
+            const dropdownToggles = document.querySelectorAll('.dropdown-menu, .nested-dropdown-menu');
+            
+            // --- Mobile Menu Toggle ---
+            const toggleMobileMenu = () => {
+                navLinks.classList.toggle('is-open');
+                mobileButton.classList.toggle('active');
+                const isExpanded = mobileButton.classList.contains('active');
+                mobileButton.setAttribute('aria-expanded', isExpanded);
+                // Close all dropdowns when mobile menu closes
+                if (!isExpanded) {
+                    closeAllDropdowns(null);
+                }
+            };
+            
+            if (mobileButton) {
+                mobileButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            // --- Dropdown Logic ---
+            
+            // Utility function to close all open dropdowns
+            const closeAllDropdowns = (currentElement) => {
+                // Select all open dropdowns (main and nested)
+                document.querySelectorAll('.dropdown-menu.open, .nested-dropdown-menu.open').forEach(el => {
+                    // Check if the current element is not the one we clicked, and is not an ancestor of the one we clicked
+                    if (el !== currentElement && !el.contains(currentElement)) {
+                         el.classList.remove('open');
+                         // For the main Brands dropdown, reset the arrow
+                         if (el.id === 'brands-dropdown-toggle') {
+                             el.querySelector('.primary-arrow').innerHTML = '&#9662;'; // Down arrow
+                         }
+                    }
+                });
+            };
+
+            const handleDropdownClick = (e) => {
+                // Stop the event from bubbling up to the document click listener
+                e.stopPropagation();
+
+                const parentDropdown = e.currentTarget;
+                const wasOpen = parentDropdown.classList.contains('open');
+
+                // 1. Close all other currently open dropdowns
+                // This is crucial for single-open behavior
+                closeAllDropdowns(parentDropdown);
+
+                // 2. Toggle the clicked dropdown
+                if (!wasOpen) {
+                    parentDropdown.classList.add('open');
+                } else {
+                    parentDropdown.classList.remove('open');
+                }
+
+                // 3. Update the arrow direction for the main Brands dropdown
+                if (parentDropdown.id === 'brands-dropdown-toggle') {
+                    const arrow = parentDropdown.querySelector('.primary-arrow');
+                    arrow.innerHTML = parentDropdown.classList.contains('open') ? '&#9650;' : '&#9662;';
+                }
+            };
+
+            // Attach event listeners to all dropdown toggles
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleDropdownClick);
+            });
+
+            // Close all dropdowns when clicking anywhere outside of them (Desktop Only)
+            document.addEventListener('click', () => {
+                if (window.innerWidth >= 768) {
+                    closeAllDropdowns(null);
+                }
+            });
+        });
+    </script>
+ 
+   
+    
+        <div class="Banner-section ">
+            <div style="position: relative; width: 100%; height: 500px; overflow: hidden;">
+                <video 
+                  autoplay 
+                  loop 
+                  muted 
+                  playsinline 
+                  style="width: 100%; height: 150%; object-fit: cover;">
+                  <source src="Images/video background.mp4" type="video/mp4">
+    
+                </video>
+              
+               
+              </div>    
+             
+                
+            
+
+               
+        </div>
+        
+
+        <div id="new-arrivals" class="container  py-7 ">
+
+            <h2 class="fs-1 fw-bold text-center mb-5" style="color: var(--color-cream);">Just In: Latest Collections</h2>
+            <div id="newArrivalsCarousel" class="carousel slide rounded-xl shadow-2xl" data-bs-ride="carousel"  data-bs-interval="2000">
+               
+                <div class="carousel-inner rounded-xl">
+                    <!-- Carousel Image 1-->
+                    <div class="carousel-item active  carousel-item-custom" style="background-image: url(Images/img\ crsl\ 1.jpg);">
+                        <div class="carousel-caption d-none d-md-block text-center">
+                            <h3 class="fs-1 fw-bold" style="color: var(--color-cream);">Khaadi Luxury Lawn 2025</h3>
+                            <p class="fw-medium"> Now available for pre-order. Limited stock.</p>
+                            <a href="#" class="btn  px-5 py-2 mt-3 fw-bold rounded-pill" style="background-color: var(--color-cream); color: var(--color-primary);">Shop Collection</a>
+                        </div>
+                    </div>  
+                    
+                    <!-- Carousel Image 2 -->
+                     <div class="carousel-item carousel-item-custom" style="background-image: url(Images/img\ crsl\ 2.jpg);">
+                        <div class="carousel-caption d-none d-md-block text-center">
+                            <h3 class="fs-1 fw-bold" style="color: var(--color-cream);">Lakmé</h3>
+                            <p class="fw-medium"> Now available for pre-order. Limited stock.</p>
+                            <a href="#" class="btn  px-5 py-2 mt-3 fw-bold rounded-pill" style="background-color: var(--color-cream); color: var(--color-primary);">Shop Collection</a>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Image 3 -->
+                     <div class="carousel-item carousel-item-custom" style="background-image: url(Images/img3\ crsl.jpg);">
+                        <div class="carousel-caption d-none d-md-block text-center">
+                            <h3 class="fs-1 fw-bold" style="color: var(--color-cream);">Gul Ahmed</h3>
+                            <p class="fw-medium"> Now available for pre-order. Limited stock.</p>
+                            <a href="#" class="btn  px-5 py-2 mt-3 fw-bold rounded-pill" style="background-color: var(--color-cream); color: var(--color-primary);">Shop Collection</a>
+                        </div>
+                    </div>
+                    <!-- Carousel Image 4 -->
+                    <div class="carousel-item carousel-item-custom" style="background-image: url(Images/img\ crsl4.jpg);">
+                        <div class="carousel-caption d-none d-md-block text-center">
+                            <h3 class="fs-1 fw-bold" style="color: var(--color-cream);">Sana Safinaz</h3>
+                            <p class="fw-medium"> Now available for pre-order. Limited stock.</p>
+                            <a href="#" class="btn  px-5 py-2 mt-3 fw-bold rounded-pill" style="background-color: var(--color-cream); color: var(--color-primary);">Shop Collection</a>
+                        </div>
+                    </div>
+
+
+                <!-- Carousel Buttons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#newArrivalsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newArrivalsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="bestsellers" class="container px-5  py-5 content-section" style="background-color: var(--color-cream);">
+            <h2 class="fs-1 fw-bold text-center mb-2 pt-3">Top Rated & Best Selling Apparel</h2>
+            <p class="text-center mb-5  text-secondary">A selection of our most popular ready-to-wear and unstitched collections.</p>
+            <!-- 8 Pictures -->
+            <div class="row">
+
+                <!-- Product 1 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display1\ khaadi.jpeg); background-size: cover; width: 280px; gap: 20%;">
+                        <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                            <i   style="color: var(--color-primary); opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold text-lg">Khaadi Products</h5>
+                            <p class="card-text small text-gray-500">Khaadi Luxury</p>
+                            <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$29.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 br-2px ml-2" style="background-image: url(Images/img\ latest\ display2\ khaadi.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                        <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                            <i class=" fa-4x" style="color: var(--color-primary); opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold text-lg ml-2">Khaadi Products</h5>
+                            <p class="card-text small text-gray-500">Khaadi Luxury</p>
+                            <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$69.99</p>
+                        </div>
+                    </div>
+
+                <!-- Product 3 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display\ 3\ lakme.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                        <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                            <i style="color: var(--color-primary); opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body">
+                             <h5 class="card-title fw-semibold text-lg">Lakmé Products</h5>
+                            <p class="card-text small text-gray-500">Lakmé Cosmetics</p>
+                            <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$12.50</p>
+                        </div>
+                    </div>
+
+                <!-- Product 4 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display\ 4\ lakme.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                        <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; "> 
+                            <i style="color: var(--color-primary); opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body">
+                             <h5 class="card-title fw-semibold text-lg">Lakmé Products</h5> 
+                            <p class="card-text small text-gray-500">Lakmé Cosmetics</p>
+                            <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$22.50</p>
+                        </div>
+                    </div>
+                    <!-- product 5 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display\ 5\ gul\ ahmed.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                        <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                            <i   style="color: var(--color-primary); opacity: 0.7;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold text-lg">Gul Ahmed</h5>
+                            <p class="card-text small text-gray-500">Gul Ahmed Product</p>
+                            <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$19.00</p>
+                        </div>
+                    </div>
+                    <!-- Product 6 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/gul\ ahmed.webp);  background-size: cover; width: 280px; gap: 20%;">
+                    <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem;">
+                        <i style="color: var(--color-primary); opacity: 0.7;"></i>
+                    </div>
+                    <div class="card-body">
+                         <h5 class="card-title fw-semibold text-lg">Gul Ahmed</h5>
+                        <p class="card-text small text-gray-500">Gul Ahmed Product</p>
+                        <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$22.20</p>
+                    </div>
+                </div>  
+                  <!-- Product 7 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display\ 7\ sana\ safinaz.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                    <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                        <i style="color: var(--color-primary); opacity: 0.7;"></i>
+                    </div>
+                    <div class="card-body">
+                         <h5 class="card-title fw-semibold text-lg">Sana Safinaz Luxury</h5>
+                        <p class="card-text small text-gray-500">Sana Safinaz Product</p>
+                        <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$22.50</p>
+                    </div>
+                </div> 
+                
+                  <!-- Product 8 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-1 ml-2" style="background-image: url(Images/img\ latest\ display\ 8\ sana\ safinaz.jpeg);  background-size: cover; width: 280px; gap: 20%;">
+                    <div class="card-img-top flex items-center justify-center rounded-t-xl" style="height: 12rem; ">
+                        <i style="color: var(--color-primary); opacity: 0.7;"></i>
+                    </div>
+                    <div class="card-body">
+                         <h5 class="card-title fw-semibold text-lg">Sana Safinaz Luxury</h5>
+                        <p class="card-text small text-gray-500">Sana Safinaz Product</p>
+                        <p class="fs-5 fw-bold mt-2" style="color: var(--color-primary);">$32.50</p>
+                    </div>
+                </div>  
+
+                    
+                  
+                </div>
+                 <!-- 8 Pictures -->
+        </div>
+       
+        
+        <div id="Our-brands" class="container px-4  py-7 content-section " style="background-color: var(--color-light-aqua); ">
+            <h2 class="fs-1 fw-bold text-center mb-1">Our Official Partner Brands</h2>
+            <p class="text-center mb-6 fs-4" style="color: var(--color-primary);">We guarantee 100% authenticity and the latest collections from Pakistan's most respected fashion houses and beauty conglomerates.</p>
+
+            <div class="row ">
+                <div class="col">
+                    <div class="d-flex p-4 rounded-xl shadow-lg h-full" style="background-color: var(--color-cream);">
+                        <i class=" me-4 mt-2" style="color: var(--color-primary);"></i>
+                        <div>
+                            <h3 class="fw-bold" style="color: var(--color-primary);">Khaadi & Sana Safinaz</h3>
+                            <p class=" text-secondary mb-3">Premium Lawn, Pret, and Unstitched</p>
+                            <p class="mb-3">
+                                Discover the vibrant colors, intricate embroidery, and modern cuts that define the Pakistani luxury aesthetic. From casual everyday wear to formal event pieces, our apparel selection offers unmatched quality and style. New collections drop every month.
+                            </p>
+                            <a href="#" class="text-uppercase fw-bold small text-decoration-none" style="color: var(--color-primary);">View All Apparel →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="d-flex p-4 rounded-xl shadow-lg h-full" style="background-color: var(--color-cream);">
+                        <i class=" me-4 mt-2 " style="color: var(--color-primary);"></i>
+                        <div>
+                            <h3 class="fs-4 fw-bold" style="color: var(--color-primary);">Lakmé Cosmetics Official</h3>
+                            <p class=" text-secondary mb-3">Foundation, Skincare, and Color</p>
+                            <p class="mb-3">
+                                Shop the complete range of Lakmé products, India's leading cosmetics brand. Known for high performance and skin-friendly formulas, Lakmé is the perfect complement to your beautiful attire. Check out our exclusive Festive Kits.
+                            </p>
+                            <a href="#" class="text-uppercase fw-bold small text-decoration-none" style="color: var(--color-primary);">View All Lakmé Range →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="lookbook" class="container px-4  py-7">
+            <h2 class="text-4xl fw-bold text-center mb-5" style="color: var(--color-cream);">The Fashionify Style Lookbook</h2>
+            <p class="text-center mb-6 lead" style="color: var(--color-accent-medium);">Find inspiration for your next ensemble with our curated style guides and pairings.</p>
+            
+            <div class="row g-4">
+                <div class="col-12 col-md-8">
+                    <div class="lookbook-card"  style=" height: 500px; width: 800px; background-image: url(Images/gul\ ahmed\ 1.webp); background-size: cover;">
+                        <div class="lookbook-content">
+                                <!-- <h4 class="mt-2 fw-bold">The Art of Intricate Detailing</h4>
+                                <p class=" mb-0">Featuring the 'Jahanara' series by Khaadi.</p> -->
+                            <a href="#" class=" fw-bold text-uppercase text-decoration-none" style="color: var(--color-accent-medium);">    </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="lookbook-card  h-100" style="min-height: 500px; width: 440px; background-image: url(Images/khaadi\ 2.webp); background-size: cover;">
+                        <div class="lookbook-content">
+                            <!-- <h4 class="mt-2 fw-bold">Unstitched Winter Lawn</h4>
+                            <p class=" mb-0">New shades and wool blends for comfort.</p> -->
+                            
+                            <a href="#" class=" fw-bold text-uppercase text-decoration-none" style="color: var(--color-cream);"></a>
+                        </div>
+                    </div>
+                </div>
+             <!-- 4 pictures Product    -->
+                <div class="col-12 col-md-4">
+                    <div class="lookbook-card  h-100" style="min-height: 200px; width: 400px; background-image: url(Images/sana\ 1.webp); background-size: cover;">
+                        <div class="lookbook-content">
+
+                            <a href="#" class=" fw-bold text-uppercase teFootwearxt-decoration-none" style="color: var(--color-accent-medium);"></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="lookbook-card  h-100" style="min-height: 500px; background-image: url(Images/gul\ kids.jpg); background-size: cover;">
+                        <div class="lookbook-content">
+
+                            <a href="#" class=" fw-bold text-uppercase teFootwearxt-decoration-none" style="color: var(--color-accent-medium);"></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="lookbook-card  h-100" style="min-height: 500px; width: 440px; background-image: url(Images/lakme\ 1.webp); background-size: cover;">
+                        <div class="lookbook-content">
+                            <!-- <h4 class="mt-2 fw-bold">Unstitched Winter Lawn</h4>
+                            <p class=" mb-0">New shades and wool blends for comfort.</p> -->
+                            
+                            <a href="#" class=" fw-bold text-uppercase text-decoration-none" style="color: var(--color-cream);"></a>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            
+        </div>
+
+
+        <div class="container py-5  px-4  rounded-3 shadow-lg" style="background-color: var(--color-primary);">
+            <div class="text-center">
+                <h2 class="fs-1 fw-bold" style="color: var(--color-cream);">Unlock Exclusive Discounts</h2>
+                <p class="mt-3 " style="color: var(--color-accent-medium);">Subscribe now and receive 15% off your next purchase of luxury apparel or cosmetics.</p>
+                <form class="mt-4 d-flex   gap-3" style="flex-direction: row;">
+                   <div class="container">
+                  <div class="row">
+                    <div class="col-12 col-lg-10 ">
+                        <input type="email" placeholder="Enter your email address" class="p-3 shadow-lg rounded-pill border-0" required style="width: 100%;; color: var(--color-text-dark);">
+                   
+                    </div>
+                    <div class="col-12 col-lg-2 float-left mt-1">
+                        <button  data-bs-toggle="modal"
+                        data-bs-target="#modalId" type="button" class="btn  px-5 py-3 fw-bold rounded-pill shadow-lg" style="width: 100%; background-color: var(--color-accent-medium); color: var(--color-text-dark);">
+                            SUBSCRIBE
+                        </button>
+                        
+                        <!-- Modal Body -->
+                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                        <div
+                            class="modal fade"
+                            id="modalId"
+                            tabindex="-1"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            
+                            role="dialog"
+                            aria-labelledby="modalTitleId"
+                            aria-hidden="true"
+                        >
+                            <div
+                                class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                role="document"
+                            >
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitleId">
+                                            <img src="Images/vochur.png">
+                                        </h5>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                        ></button>
+                                    </div>
+                                   
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Optional: Place to the bottom of scripts -->
+                        <script>
+                            const myModal = new bootstrap.Modal(
+                                document.getElementById("modalId"),
+                                options,
+                            );
+                        </script>
+                        
+                    </div>
+                  </div>
+                   </div>
+                
+                </form>
+            </div>
+        </div>
+
+   
+
+
+    
+          </div>
+
+
+    
+     <footer id="footer">
+        <div class="container">
+            <div id="footer-grid">
+                <div class="footer-col">
+                    <h5>About</h5>
+                    <p>Fashionify is Pakistan’s go-to place for top fashion brands and beauty favorites like Khaadi, Gul
+                        Ahmed, Sana Safinaz, and Lakmé.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Contact Us</h5>
+                    <p><i class="fa-solid fa-location-dot"></i> Fashionify Studio, Karachi, Pakistan</p>
+                    <p><i class="fa-solid fa-phone"></i> +92-300 9227559</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@fashionify.com</p>
+                    <p>
+                        <a href="https://www.instagram.com/fash_nify " target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Zamair%20Khan" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </p>
+                </div>
+                
+
+                <div class="footer-col" >
+                    <h5>Quick Links</h5>
+                    <p><a href="khaadi_shop.html" style="text-decoration: none; color: #ffffff;">Khaadi Collection</a></p>
+                    <p><a href="Gul_Ahmed_shop.html" style="text-decoration: none; color: #ffffff;">Gul Ahmed Lawn</a></p>
+                    <p><a href="Sana_Safinaz_shop.html" style="text-decoration: none; color: #ffffff;">Sana Safinaz Wear</a></p>
+                    <p><a href="Lakmé_shop.html" style="text-decoration: none; color: #ffffff;">Lakmé Beauty</a></p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p><i class="fa-regular fa-copyright"></i> 2025 Fashionify. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

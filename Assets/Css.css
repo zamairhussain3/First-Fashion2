@@ -1,0 +1,502 @@
+
+         :root {
+            
+            --main-dark: #333333; 
+            --main-blue: #006464; 
+            --bg-light: #edecc7;
+            --bg-section: #CCCCCC;
+            --main-blue-light: #70c4c4; 
+        }
+
+          #footer {
+            background: var(--main-dark);
+            color: white !important;
+            padding: 3rem 0 1rem 0;
+            margin-top: 3rem;
+        }
+
+        #footer-grid {
+            display: grid;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-col h5 {
+            border-bottom: 2px solid var(--main-blue);
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col i {
+            color: var(--main-blue);
+            margin-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            #about-text {
+                flex-direction: row;
+            }
+
+            #values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+                :root {
+            /* Updated Color Theme */
+            --main-dark: #333333; /* Used for text, headers, and footer background */
+            --main-blue: #006464; /* Teal - Main accent color */
+            --bg-light: #edecc7; /* Light Cream/Yellow - Body background */
+            --bg-section: #CCCCCC; /* Light Gray - Section background */
+            --main-blue-light: #70c4c4; /* Lighter Teal - For hover states/subtle accents */
+        }
+       .navbar {
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo/Branding */
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--main-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            /* Ensure logo image and text are aligned */
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand img {
+            height: 40px; /* Increased height to better show the new logo */
+            width: auto;
+            border-radius: 4px;
+            margin-right: 8px; /* Space between logo and brand name 'A' */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- 4. Mobile Menu Toggle Button --- */
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+        }
+        
+        .menu-icon:hover, .menu-icon:focus {
+            background-color: var(--main-blue);
+        }
+        
+        .menu-icon-svg {
+            height: 24px;
+            width: 24px;
+            stroke: var(--main-dark);
+            transition: stroke 0.2s;
+        }
+        
+        .menu-icon:hover .menu-icon-svg, 
+        .menu-icon:focus .menu-icon-svg,
+        .menu-icon.active .menu-icon-svg {
+            stroke: var(--bg-light);
+        }
+
+        /* Icon switching controlled by JS class 'active' */
+        .close-icon { display: none; }
+        .menu-icon.active .hamburger { display: none; }
+        .menu-icon.active .close-icon { display: block; }
+
+
+        /* --- 5. Navigation Links (Mobile Default) --- */
+        .nav-links {
+            display: none; 
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 8px 12px 12px;
+        }
+
+        /* Show menu when JS adds the 'is-open' class */
+        .nav-links.is-open {
+            display: block;
+        }
+
+        .nav-link {
+            /* For non-dropdown links */
+            display: block; 
+            color: var(--main-dark);
+            font-weight: 500;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-light);
+            background-color: var(--main-blue);
+        }
+
+        /* CTA Button - Full width on mobile */
+        .cta-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            background-color: var(--main-blue);
+            color: var(--bg-light);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--main-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- 6. Dropdown Styling --- */
+        .dropdown-menu {
+            position: relative;
+            user-select: none;
+            padding: 10px 12px; /* Matches nav-link padding */
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-menu:hover {
+             background-color: rgba(0, 100, 100, 0.1); /* Light teal hover */
+        }
+        
+        .dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.15); /* Slightly darker when open */
+        }
+
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        /* Main Dropdown Content (Brands list) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 4px 0;
+            z-index: 20;
+            border-radius: 8px;
+            top: 100%; 
+            left: 0;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        /* Show content when parent is open */
+        .dropdown-menu.open > .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown items/links */
+        .dropdown-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative; /* For nested dropdown */
+        }
+
+        .dropdown-link:hover {
+            background-color: rgba(0, 100, 100, 0.1);
+            color: var(--main-dark);
+        }
+
+        /* Nested Dropdown Styles */
+        .nested-dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.2); /* Highlight open nested item */
+        }
+
+        .nested-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%; /* Position to the right of the parent */
+            min-width: 150px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            z-index: 30;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            padding: 4px 0;
+        }
+
+        .nested-dropdown-menu.open > .nested-content {
+            display: block;
+        }
+
+        .nested-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nested-link:hover {
+            background-color: rgba(0, 100, 100, 0.15);
+        }
+
+        /* --- 7. Desktop Styles (min-width: 768px) --- */
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                top: auto;
+                box-shadow: none;
+                padding: 0;
+                background-color: transparent;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-link, .dropdown-menu {
+                display: inline-flex; /* Use flex for dropdowns on desktop to align arrow */
+                margin-bottom: 0;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+
+        /* --- 8. Mobile Dropdown Adaptation --- */
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                display: block; /* Full width button on mobile */
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .dropdown-content {
+                position: static; /* Stack on mobile */
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                border: none;
+                /* Optional: Add slight indent for separation */
+                padding-left: 15px;
+            }
+
+            .dropdown-link {
+                padding-left: 30px; /* Further indent */
+            }
+
+            .nested-content {
+                position: static; /* Stack on mobile */
+                box-shadow: none;
+                min-width: 100%;
+                border: none;
+                padding: 0;
+                /* Optional: Add slight indent for separation */
+                padding-left: 15px;
+            }
+
+            .nested-link {
+                padding-left: 45px; /* Deepest indent */
+            }
+        }
+        
+     :root {
+            --color-primary: #006464; 
+            --color-accent-medium: #70c4c4;
+            --color-light-aqua: #9cd4d4; 
+            --color-cream: #edecc7; 
+            --color-text-light: #f5f5f5;
+            --color-text-dark: #111111; 
+        }
+
+
+        
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary);
+             color: var(--color-text-light);
+            scroll-behavior: smooth;
+
+
+}.learn-more {
+    color: #244747;
+    font-weight: bold;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.quick-links {
+    flex: 1; 
+}
+
+.spotlights {
+    flex: 0 0 350px;
+    background-color: #ededed;
+    padding: 15px;
+}
+
+.spotlights h5 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #244747;
+}
+
+.spotlight-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+       
+
+        
+
+
+
+    
+        
+
+       
+
+        .content-section {
+            border-radius: 24px;
+            margin-top: 48px;
+            margin-bottom: 48px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: var(--color-text-dark);
+        }
+        .content-section.light-aqua {
+            background-color: var(--color-light-aqua);
+        }
+        .content-section.cream {
+            background-color: var(--color-cream);
+        }
+        .content-section h2, .content-section h5 {
+            color: var(--color-primary); 
+            font-weight: 800;
+        }
+        
+        .carousel-item-custom {
+            height: 400px; 
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        .carousel-item-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); 
+        }
+        .carousel-caption {
+            z-index: 10;
+            top: 50%;
+            transform: translateY(-50%);
+            bottom: auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+         
+        .lookbook-card {
+            min-height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .lookbook-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        }
+        .lookbook-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .lookbook-content {
+            z-index: 2;
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            color: var(--color-text-light);
+        }
+        
+        

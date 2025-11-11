@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url(Images/Background.png);
+            background-size: cover;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .login-container {
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 380px;
+            padding: 15px 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .login-container h2 {
+            color: white;
+            font-size: xx-large;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-container p {
+            color: gray;
+            font-size: medium;
+            margin-bottom: 15px;
+        }
+
+        .Input-Fields {
+            color: white;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .Input-Fields label {
+            color: rgb(184, 184, 184);
+            display: block;
+            font-size: small;
+            margin-bottom: 8px;
+            font-weight: bolder;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .Input-Fields input {
+            background: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 0.7rem;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .Input-Fields input:focus {
+            outline: none;
+            border-color: #002fff;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 0.7rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .toggle-password i {
+            font-size: 1.1rem;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            font-size: 0.8rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #a0a0b0;
+        }
+
+        .remember-me input {
+            accent-color: #2D5273;
+        }
+
+        .forgot-password {
+            color: #0633ff !important;
+            text-decoration: none;
+        }
+
+        .signin-btn {
+            background: linear-gradient(to right, #22374A, #4b7fbe);
+            width: 100%;
+            border-radius: 8px;
+            height: 45px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            font-size: large;
+            color: white;
+        }
+
+        .divider {
+            display: flex;
+            color: #707080;
+            align-items: center;
+            margin: 1.25rem 0;
+            font-size: 0.75rem;
+        }
+
+        .divider::after,
+        .divider::before {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider span {
+            padding: 0 0.8rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            flex: 1;
+            gap: 0.4rem;
+            padding: 0.7rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .signup {
+            font-size: 0.85rem;
+            color: #a0a0b0;
+        }
+
+        .signup a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        #Login_ErrorMessage {
+            padding: 0.75rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            text-align: center;
+            transition: all 300ms ease;
+            display: none;
+            background-color: #991B1B;
+            color: white;
+        }
+
+        #Login_EmailError,
+        #Login_PasswordError,
+        #Login_UsernameError,
+        #Login_ConfirmPasswordError {
+            color: red;
+            margin-top: -1%;
+            padding-left: 6px;
+            font-size: small;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+   <script>
+function Login() {
+    let Username = document.getElementById("username").value.trim();
+    let Email = document.getElementById("email").value.trim();
+    let Password = document.getElementById("password").value;
+    let ConfirmPassword = document.getElementById("confirmpassword").value;
+
+
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = users.some(user => user.Email === Email);
+
+    Login_EmailError.style.display = "none";
+    Login_PasswordError.style.display = "none";
+    Login_UsernameError.style.display = "none";
+    Login_ConfirmPasswordError.style.display = "none";
+
+    if (!Username) {
+        Login_UsernameError.style.display = "block";
+        Login_UsernameError.textContent = "Username is required.";
+    } 
+    else if (!Email) {
+        Login_EmailError.style.display = "block";
+        Login_EmailError.textContent = "Valid Email is required.";
+    } 
+    else if (!Password) {
+        Login_PasswordError.style.display = "block";
+        Login_PasswordError.textContent = "Password is required.";
+    } 
+    else if (Password.length < 6) {
+        Login_PasswordError.style.display = "block";
+        Login_PasswordError.textContent = "Password must be at least 6 characters.";
+    } 
+    else if (!ConfirmPassword) {
+        Login_ConfirmPasswordError.style.display = "block";
+        Login_ConfirmPasswordError.textContent = "Please confirm your password.";
+    } 
+    else if (Password !== ConfirmPassword) {
+        Login_ConfirmPasswordError.style.display = "block";
+        Login_ConfirmPasswordError.textContent = "Passwords do not match.";
+    } 
+    else if (userExists) {
+        Login_ErrorMessage.style.display = "block";
+        Login_ErrorMessage.style.backgroundColor = "#991B1B";
+        Login_ErrorMessage.textContent = "Error! An account with this email already exists.";
+        setTimeout(() => {
+            Login_ErrorMessage.style.display = "none";
+        }, 2000);
+    } 
+    else {
+        users.push({
+            Username: Username,
+            Email: Email,
+            Password: Password
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+
+        Login_ErrorMessage.style.display = "block";
+        Login_ErrorMessage.style.backgroundColor = "green";
+        Login_ErrorMessage.textContent = "Success! Logging you in...";
+        
+        setTimeout(() => {
+            window.location.href = "home.html";
+        }, 2000);
+    }
+}
+
+function Login_PassHider() {
+    let passwordInput = document.getElementById("password");
+    let toggleButton = document.getElementById("togglePassword");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleButton.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    } else {
+        passwordInput.type = "password";
+        toggleButton.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    }
+}
+</script>
+
+
+
+    <div class="login-container">
+
+        <h2>Welcome Back</h2>
+        <p>Sign in to your account</p>
+
+        <div id="Login_ErrorMessage"></div>
+
+        <!-- Username -->
+        <div class="Input-Fields">
+            <label for="username">Username</label>
+            <input type="text" id="username">
+            <p id="Login_UsernameError"></p>
+        </div>
+
+        <!-- Email -->
+        <div class="Input-Fields">
+            <label for="email">Email Address</label>
+            <input type="email" id="email">
+            <p id="Login_EmailError"></p>
+        </div>
+
+        <!-- Password -->
+        <div class="Input-Fields">
+            <label for="password">Password</label>
+            <div class="input-group">
+                <input type="password" id="password" required>
+                <button type="button" id="togglePassword" class="toggle-password" onclick="Login_PassHider()">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+            <p id="Login_PasswordError"></p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="Input-Fields">
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" required>
+            
+            <p id="Login_ConfirmPasswordError"></p>
+        </div>
+
+        <div class="options">
+            <label class="remember-me">
+                <input type="checkbox" name="remember"> Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="signin-btn" onclick="Login()">Sign In</button>
+
+        <div class="divider">
+            <span>or continue with</span>
+        </div>
+
+        <div class="social-login">
+            <button class="social-btn google">
+                <img src="Images/google.png" alt="" height="20px" width="20px">
+                Google
+            </button>
+            <button class="social-btn github">
+                <img src="Images/github.png" alt="" height="20px" width="20px">
+                GitHub
+            </button>
+        </div>
+
+        <p class="signup">Don't have an account? <a href="Login.html">Sign up</a></p>
+
+    </div>
+
+</body>
+</html>

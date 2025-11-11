@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback - Campus Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+    body{
+        background: url(Images/Feedback.jpg);
+        background-size: cover;
+        background-position: top;
+    }
+
+
+        .feedback-container {
+            background: transparent;
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px; 
+            padding: 40px;
+            margin: 4rem auto; 
+        }
+
+        .feedback-container h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--light-text-color);
+            font-weight: 600;
+        }
+
+        .feedback-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--light-text-color);
+        }
+
+        .feedback-container input,
+        .feedback-container textarea,
+        .feedback-container select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--tertiary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            background-color: var(--primary-color1);
+            color: var(--light-text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feedback-container select option {
+             background: var(--primary-color1);
+             color: var(--light-text-color);
+        }
+
+        .feedback-container input:focus,
+        .feedback-container textarea:focus,
+        .feedback-container select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(214, 189, 152, 0.5);
+        }
+
+        .feedback-container textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .feedback-container button {
+            width: 100%;
+            background: var(--accent-color);
+            border: none;
+            padding: 14px 0;
+            font-size: 18px;
+            color: var(--primary-color1);
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .feedback-container button:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+            background-color: #70c4c4;
+            color: #edecc7;
+        }
+
+        .success-message {
+            text-align: center;
+            color: var(--accent-color);
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: none;
+        }
+
+
+
+
+
+
+:root {
+ 
+    --primary-color1: #1a3636;
+    --secondary-color: #006464;
+    --tertiary-color: #677d6a;
+    --accent-color: #d6bd98;
+    --light-text-color: #f8f9fa;
+    --dark-teal: #1A2E2E;
+    --slate-green: #465A54;
+    --sage-green: #6D8379;
+    --beige-bg: #D6C5A9;
+    --text-light: #F5F5F5;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --dark-gray: #4a4a4a; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+    
+    <style>
+        
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            
+            <a href="#" class="brand" style="margin-left: -30%;">
+                <img src="Images/logo.png" alt="Company Logo">
+                FASHNIFY
+            </a>
+
+            <button id="mobile-menu-button" class="menu-icon" aria-expanded="false" aria-controls="nav-links">
+               
+                
+            </button>
+            
+            <div class="nav-links" id="nav-links" style="margin-right: 10%;"> 
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <div class="nav-link dropdown-menu" id="brands-dropdown-toggle">
+                  Brands 
+                  <span class="dropdown-arrow primary-arrow">&#9662;</span>
+                  
+                  <div class="dropdown-content">
+                    
+            
+                              <a href="Gul_Ahmed_shop.html" class="nested-link">Gul_Ahmed</a>
+                              <a href="Lakmé_shop.html" class="nested-link">Lakmé</a>
+                              <a href="khaadi_shop.html" class="nested-link">Khaadi</a>
+                              <a href="Sana_Safinaz_shop.html" class="nested-link">Sana_Safinaz</a>
+                       
+                  </div>
+              </div>
+                   
+               
+
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Contact.html" class="nav-link">Contact</a>
+                <a href="feedback.html" class="nested-link">Feedback</a>
+                
+               
+            </div>
+        </div>
+         <a href="Register.html" class="cta-button" style="margin-right: 10px; text-decoration: none;">
+                    Sign Up
+         </a>
+    </nav>
+
+
+    <style>
+          
+             :root {
+            --main-dark: #333333; 
+            --main-blue: #006464;
+            --bg-light: #edecc7; 
+            --bg-section: #CCCCCC;
+            --main-blue-light: #70c4c4; 
+        }
+       .navbar {
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            border-radius: 0 0 12px 12px;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo/Branding */
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--main-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand img {
+            height: 40px; 
+            width: auto;
+            border-radius: 4px;
+            margin-right: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+        }
+        
+        .menu-icon:hover, .menu-icon:focus {
+            background-color: var(--main-blue);
+        }
+        
+        .menu-icon-svg {
+            height: 24px;
+            width: 24px;
+            stroke: var(--main-dark);
+            transition: stroke 0.2s;
+        }
+        
+        .menu-icon:hover .menu-icon-svg, 
+        .menu-icon:focus .menu-icon-svg,
+        .menu-icon.active .menu-icon-svg {
+            stroke: var(--bg-light);
+        }
+
+        .close-icon { display: none; }
+        .menu-icon.active .hamburger { display: none; }
+        .menu-icon.active .close-icon { display: block; }
+
+
+        .nav-links {
+            display: none; 
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 8px 12px 12px;
+        }
+
+        .nav-links.is-open {
+            display: block;
+        }
+
+        .nav-link {
+            display: block; 
+            color: var(--main-dark);
+            font-weight: 500;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-light);
+            background-color: var(--main-blue);
+        }
+
+        .cta-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            background-color: var(--main-blue);
+            color: var(--bg-light);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--main-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu {
+            position: relative;
+            user-select: none;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-menu:hover {
+             background-color: rgba(0, 100, 100, 0.1); 
+        }
+        
+        .dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.15); 
+        }
+
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            padding: 4px 0;
+            z-index: 20;
+            border-radius: 8px;
+            top: 100%; 
+            left: 0;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .dropdown-menu.open > .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .dropdown-link:hover {
+            background-color: rgba(0, 100, 100, 0.1);
+            color: var(--main-dark);
+        }
+
+        .nested-dropdown-menu.open {
+            background-color: rgba(0, 100, 100, 0.2); 
+        }
+
+        .nested-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%; 
+            min-width: 150px;
+            background-color: var(--bg-light);
+            box-shadow: var(--shadow);
+            z-index: 30;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            padding: 4px 0;
+        }
+
+        .nested-dropdown-menu.open > .nested-content {
+            display: block;
+        }
+
+        .nested-link {
+            padding: 8px 16px;
+            color: var(--main-dark);
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nested-link:hover {
+            background-color: rgba(0, 100, 100, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex;
+                position: static;
+                top: auto;
+                box-shadow: none;
+                padding: 0;
+                background-color: transparent;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-link, .dropdown-menu {
+                display: inline-flex;
+                margin-bottom: 0;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                display: block; 
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .dropdown-content {
+                position: static; 
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                border: none;
+                padding-left: 15px;
+            }
+
+            .dropdown-link {
+                padding-left: 30px;
+            }
+
+            .nested-content {
+                position: static; 
+                box-shadow: none;
+                min-width: 100%;
+                border: none;
+                padding: 0;
+                padding-left: 15px;
+            }
+
+            .nested-link {
+                padding-left: 45px; 
+            }
+        }
+
+    </style>
+    
+
+
+
+    <div class="container">
+        <div class="feedback-container" data-aos="fade-up">
+            <h2>Share Your Thoughts</h2>
+            <form id="feedbackForm">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+        
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        
+                <label for="eventRating">Rate Our Service?</label>
+                <select id="eventRating" name="eventRating" required>
+                    <option value="" disabled selected>Select a rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+        
+                <label for="feedback">Additional Feedback</label>
+                <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea>
+        
+                <button type="submit">Submit Feedback</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                Thank you for your feedback! We appreciate your input.
+            </div>
+        </div>
+    </div>
+
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+             duration: 800,
+             once: true
+        });
+
+        
+    </script>
+    <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.getElementById('nav-links'); 
+            const dropdownToggles = document.querySelectorAll('.dropdown-menu, .nested-dropdown-menu');
+            
+            const toggleMobileMenu = () => {
+                navLinks.classList.toggle('is-open');
+                mobileButton.classList.toggle('active');
+                const isExpanded = mobileButton.classList.contains('active');
+                mobileButton.setAttribute('aria-expanded', isExpanded);
+                if (!isExpanded) {
+                    closeAllDropdowns(null);
+                }
+            };
+            
+            if (mobileButton) {
+                mobileButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            
+            const closeAllDropdowns = (currentElement) => {
+                document.querySelectorAll('.dropdown-menu.open, .nested-dropdown-menu.open').forEach(el => {
+                    if (el !== currentElement && !el.contains(currentElement)) {
+                         el.classList.remove('open');
+                         if (el.id === 'brands-dropdown-toggle') {
+                             el.querySelector('.primary-arrow').innerHTML = '&#9662;'; // Down arrow
+                         }
+                    }
+                });
+            };
+
+            const handleDropdownClick = (e) => {
+                e.stopPropagation();
+
+                const parentDropdown = e.currentTarget;
+                const wasOpen = parentDropdown.classList.contains('open');
+
+                closeAllDropdowns(parentDropdown);
+
+                if (!wasOpen) {
+                    parentDropdown.classList.add('open');
+                } else {
+                    parentDropdown.classList.remove('open');
+                }
+
+                if (parentDropdown.id === 'brands-dropdown-toggle') {
+                    const arrow = parentDropdown.querySelector('.primary-arrow');
+                    arrow.innerHTML = parentDropdown.classList.contains('open') ? '&#9650;' : '&#9662;';
+                }
+            };
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', handleDropdownClick);
+            });
+
+            document.addEventListener('click', () => {
+                if (window.innerWidth >= 768) {
+                    closeAllDropdowns(null);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
